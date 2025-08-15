@@ -21,7 +21,7 @@ spec:
           command:
             - sh
             - -c
-            - echo "hello 3" > /usr/share/nginx/html/index.html
+            - echo "hello v4" > /usr/share/nginx/html/index.html
           volumeMounts:
             - name: html
               mountPath: /usr/share/nginx/html
