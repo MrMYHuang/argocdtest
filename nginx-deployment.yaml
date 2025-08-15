@@ -4,7 +4,7 @@ metadata:
   name: nginx-index
 data:
   index.html: |
-    hello v1
+    hello v2
 ---
 apiVersion: apps/v1
 kind: Deployment
