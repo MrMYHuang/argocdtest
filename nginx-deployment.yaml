@@ -21,7 +21,7 @@ spec:
           command:
             - sh
             - -c
-            - echo "hello v5" > /usr/share/nginx/html/index.html
+            - echo "hello v6" > /usr/share/nginx/html/index.html
           volumeMounts:
             - name: html
               mountPath: /usr/share/nginx/html
@@ -55,7 +55,7 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-  - host: "n"
+  - host: "n.mrmyh.eu.org"
     http:
       paths:
       - backend:
@@ -65,3 +65,21 @@ spec:
               number: 80
         path: /
         pathType: Exact
+---
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: http-route
+spec:
+  parentRefs:
+  - name: gateway
+    namespace: default
+  hostnames: ["nn.mrmyh.eu.org"]
+  rules:
+  - matches:
+    - path:
+        type: PathPrefix
+        value: /
+    backendRefs:
+    - name: notes-backend
+      port: 8080
